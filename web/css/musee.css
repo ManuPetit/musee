@@ -1,0 +1,415 @@
+/*
+        FONT FAMILY
+ */
+@font-face {
+    font-family: 'AbrilFatface';
+    src: url('../fonts/AbrilFatface-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'PT_Sans-Web';
+    src: url('../fonts/PT_Sans-Web-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'PT_Sans-Web';
+    src: url('../fonts/PT_Sans-Web-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'PT_Sans-Web';
+    src: url('../fonts/PT_Sans-Web-BoldItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'PT_Sans-Web';
+    src: url('../fonts/PT_Sans-Web-Italic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Bitter';
+    src: url('../fonts/Bitter-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Bitter';
+    src: url('../fonts/Bitter-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Bitter';
+    src: url('../fonts/Bitter-Italic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 400;
+}
+
+/*
+        MAIN CSS
+ */
+body {
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
+    background-color: #090909;
+    font-family: 'PT_Sans-Web', Verdana, Geneva, sans-serif;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
+    max-width: 1200px;
+}
+
+h1 {
+    font-family: 'Bitter', Georgia, serif;
+    letter-spacing: 0.3em;
+}
+
+h3 {
+    font-family: 'Bitter', Georgia, serif;
+    letter-spacing: 0.2em;
+}
+
+/*
+        HEADER SECTION
+ */
+header, .boxes, .rowinfo, .order {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+#branding {
+    text-align: center;
+}
+
+nav li {
+    display: block;
+    padding: 8px 0;
+    width: 100%;
+    margin-left: -20px;
+    text-align: center;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-family: 'PT_Sans-Web';
+    letter-spacing: 0.2em;
+}
+
+header .highlight, header .active a {
+    color: #66ccff;
+}
+
+header .active a {
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #0077b3;
+}
+
+/*
+        COVER SECTION
+ */
+.cover {
+    width: 100%;
+    color: #ffffff;
+    background: url("../images/le-louvre-1200x800.jpg") no-repeat 0 -200px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cover h1 {
+    font-family: 'AbrilFatface';
+    font-size: 2em;
+    letter-spacing: 0.2em;
+}
+
+.cover p {
+    width: 60%;
+    margin: 0 auto 20px auto;
+    font-size: 1em;
+}
+
+/*
+        BOX SECTION
+ */
+.presentation {
+    text-align: center;
+    color: #ffffff;
+}
+
+.box {
+    padding: 10px 20px;
+}
+
+.box p {
+    text-align: justify;
+    font-size: 0.9em;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+/*
+        BUTTONS
+ */
+.btn {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.common {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 12px;
+    color: white;
+    background-color: #0077b3;
+    border: 2px solid #004466;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-bottom: 20px;
+}
+
+.mini {
+    padding: 8px 10px;
+    font-size: 0.8em;
+    border-radius: 12px;
+}
+
+.common:hover {
+    background-color: #ffffff;
+    color: #004466;
+}
+
+/*
+        TICKET PAGE
+ */
+.rates {
+    font-size: 0.8em;
+    color: #FFFFFF;
+    padding: 10px;
+    background-color: #00334d;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+tbody tr:nth-child(even) {
+    background: #e6ffff;
+    color: #000000;
+}
+
+tbody tr:nth-child(odd) {
+    background: #e6e6ff;
+    color: #000000;
+}
+
+td {
+    padding: 2px 5px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.ticketform {
+    width: 100%;
+    background: #ffccff;
+    padding: 10px;
+}
+
+.orderbox {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    padding: 5px 15px;
+}
+
+/*
+        INFOS PAGE
+ */
+.sidebar {
+    text-align: center;
+    padding: 10px 15px;
+    background-color: #00334d;
+    color: #FFFFFF;
+}
+
+.infos {
+    color: #ffffff;
+    text-align: center;
+}
+
+.well {
+    background-color: #b3c6ff;
+    margin: 0 auto;
+}
+
+.well p {
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 1.3em;
+    color: #660000;
+}
+
+/*
+        FOOTER SECTION
+ */
+/*
+        Footer section
+*/
+footer {
+    padding: 20px;
+    color: #2a3132;
+    background-color: #66ccff;
+    font-size: 0.8em;
+    text-align: center;
+    clear: both;
+}
+
+/*
+        ERROR SECTION
+ */
+.error {
+    color: #990000;
+}
+
+.error input {
+    border: solid 1px #990000;
+}
+
+.error input:focus {
+    border: solid 1px #843534;
+}
+
+.error li {
+    display: inline;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    header, .boxes, .rowinfo {
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    #branding {
+        padding-left: 20px;
+    }
+
+    nav li {
+        display: inline;
+        padding: 5px 20px;
+    }
+
+    .cover {
+        border-radius: 12px;
+    }
+
+    .cover h1 {
+        font-size: 3em;
+        letter-spacing: 0.4em;
+    }
+
+    .cover p {
+        font-size: 1.2em;
+    }
+
+    .box {
+        padding: 10px 28px;
+    }
+
+    .box p {
+        font-size: 1em;
+    }
+
+    .rates {
+        width: 300px;
+        border-radius: 12px;
+        align-self: flex-start;
+    }
+
+    .ticketform {
+        width: 75%;
+        border-radius: 12px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    section.infos article.box {
+        width: 30%;
+    }
+
+    .sidebar {
+        text-align: left;
+        border-radius: 12px;
+        width: 30%;
+    }
+
+    .user {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid blue;
+        border-radius: 12px;
+    }
+
+    .main-col {
+        width: 65%;
+        padding: 12px;
+    }
+
+    .well {
+        width: 90%;
+        border-radius: 15px;
+    }
+
+    .well p {
+        font-size: 1.5em;
+    }
+
+    iframe {
+        border-radius: 12px;
+    }
+
+    footer {
+        border-radius: 12px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .order {
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .orderbox {
+        width: 30%;
+    }
+}

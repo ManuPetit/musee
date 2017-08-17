@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {# style sheet for the date picker #}
+    <link rel="stylesheet" href="{{ asset('js/datepick/jquery-ui.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('js/datepick/jquery-ui.structure.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('js/datepick/jquery-ui.theme.min.css') }}"/>
+
+{% endblock %}
+
+{% block body %}
+    <div class="rowinfo">
+        {% include('@Louvre/ticket/rates.html.twig') %}
+        <section class="ticketform">
+            <h1>Billetterie</h1>
+            <h4>Veuillez remplir tous les champs</h4>
+            {{ form_start(myForm) }}
+            {{ form_errors(myForm) }}
+            <div class="order">
+                <div class="orderbox {% if not myForm.venueDate.vars.valid %}error{% endif %}">
+                    {{ form_label(myForm.venueDate) }}
+                    {{ form_widget(myForm.venueDate) }}
+                    {{ form_errors(myForm.venueDate) }}
+                </div>
+                <div class="orderbox {% if not myForm.customerEmail.vars.valid %}error{% endif %}">
+                    {{ form_label(myForm.customerEmail) }}
+                    {{ form_widget(myForm.customerEmail) }}
+                    {{ form_errors(myForm.customerEmail) }}
+                </div>
+                <div class="orderbox {% if not myForm.duration.vars.valid %}error{% endif %}">
+                    {{ form_label(myForm.duration) }}
+                    {{ form_widget(myForm.duration) }}
+                    {{ form_errors(myForm.duration) }}
+                </div>
+            </div>
+            {{ form_end(myForm) }}
+        </section>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {# javascript for date picker #}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="{{ asset('js/datepick/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/datepick/datepicker-fr.js') }}"></script>
+    <script src="{{ asset('js/calendar.js') }}"></script>
+{% endblock %}

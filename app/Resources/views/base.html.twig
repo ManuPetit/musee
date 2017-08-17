@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/musee.css') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <header>
+                <div id="branding">
+                    <a href="/" title="Page d'accueil">
+                        <img src="{{ asset('images/logo-louvre.jpg') }}" alt="Logo du musée du Louvre">
+                    </a>
+                </div>
+                <nav>
+                    {{ knp_menu_render('LouvreBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+                </nav>
+            </header>
+            {% block body %}{% endblock %}
+            <footer>Copyright © 2017 Musée du Louvre</footer>
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
