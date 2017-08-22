@@ -1,0 +1,28 @@
+<div class="items">
+    <p><strong>__name__label__</strong></p>
+    <div class="item">
+        <div class="orderitem {% if not form.firstName.vars.valid %}error{% endif %}">
+            {{ form_label(form.firstName) }}
+            {{ form_widget(form.firstName) }}
+            {{ form_errors(form.firstName) }}
+        </div>
+        <div class="orderitem {% if not form.lastName.vars.valid %}error{% endif %}">
+            {{ form_label(form.lastName) }}
+            {{ form_widget(form.lastName) }}
+            {{ form_errors(form.lastName) }}
+        </div>
+        <div class="orderitem {% if not form.birthDate.vars.valid %}error{% endif %}">
+            {{ form_label(form.birthDate) }}
+            {{ form_widget(form.birthDate) }}
+            {{ form_errors(form.birthDate) }}
+        </div>
+        <div class="orderitem">
+            {{ form_label(form.country) }}
+            {{ form_widget(form.country) }}
+        </div>
+        <div class="ordercheck">
+            {{ form_widget(form.isReduceRate) }}
+            {{ form_label(form.isReduceRate) }}
+        </div>
+    </div>
+</div>

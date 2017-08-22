@@ -13,5 +13,10 @@ use Doctrine\ORM\EntityRepository;
 
 class CountryRepository extends EntityRepository
 {
-
+    public function getByAlphabeticalOrder()
+    {
+        return $this
+            ->createQueryBuilder('c')
+            ->orderBy('c.name', 'ASC');
+    }
 }

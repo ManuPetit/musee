@@ -8,6 +8,7 @@
 
 namespace LouvreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -72,10 +73,18 @@ class Order
      */
     protected $duration;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="LouvreBundle\Entity\Item", mappedBy="order", cascade={"persist"})
+     */
+    protected $items;
+
     public function __construct()
     {
         $this->orderDate = new \DateTime();
         $this->orderPaid = false;
+        $this->items = new ArrayCollection();
     }
 
     /**
@@ -196,6 +205,42 @@ class Order
     }
 
     /**
+     * @return ArrayCollection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param ArrayCollection $items
+     */
+    public function setItems(ArrayCollection $items)
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @param Item $item
+     * @return Order
+     */
+    public function addItem(Item $item)
+    {
+        $this->items[] = $item;
+        $item->setOrder($this);
+
+        return $this;
+    }
+
+    /**
+     * @param Item $item
+     */
+    public function removeItem(Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
      * @ORM\PrePersist()
      */
     public function generateOrderNumber()
@@ -210,5 +255,6 @@ class Order
             . $word
             . date_format($this->venueDate, 'ymd');
     }
+
 
 }

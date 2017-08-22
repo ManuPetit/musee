@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+{% block title %}
+    Paiement en ligne
+{% endblock %}
+
+{% block body %}
+    <div class="rowinfo">
+        {% include('@Louvre/ticket/rates.html.twig') %}
+        <section class="ticketform">
+            <h1>Votre commande</h1>
+            <p>Numéro de référence : <strong>{{ order.orderNumber }}</strong><br/>
+                Date de la visite : <strong>{{ order.venueDate|date("d/m/Y") }}</strong><br>
+                Type de visite : <strong>{{ order.duration.name }}</strong>
+            </p>
+            <div class="ordertable">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Tarif</th>
+                        <th class="text-right">Prix Unitaire</th>
+                        <th class="text-right">Quantité</th>
+                        <th class="text-right">Prix Total</th>
+                    </tr>
+                    </thead>
+                    <tbody class="bill">
+                    {% for line in lines %}
+                        <tr>
+                            <td>{{ line.name }}</td>
+                            <td class="text-right">{{ line.unit_price }}</td>
+                            <td class="text-right">{{ line.number }}</td>
+                            <td class="text-right">{{ line.total_price }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Total à payer</strong></td>
+                        <td class="text-right"><strong>{{ total_price|number_format(2,'.') }}</strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="orderpay">
+                <form action="{{ path('paiement', {'id': order.id}) }}" method="POST">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_TdGzR5koIEHwEglvAihPt0YF"
+                            data-amount="{{ stripe_amount }}"
+                            data-name="Le Louvre"
+                            data-description="Paiement en ligne sécurisé"
+                            data-image="{{ asset('images/louvre-stripe-logo-256x256.jpg') }}"
+                            data-locale="auto"
+                            data-zip-code="true"
+                            data-currency="eur"
+                            data-label="Paiement par carte de crédit">
+                    </script>
+                </form>
+            </div>
+        </section>
+    </div>
+{% endblock %}

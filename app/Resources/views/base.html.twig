@@ -20,6 +20,9 @@
                     {{ knp_menu_render('LouvreBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                 </nav>
             </header>
+            <div class="messages">
+                {% include ('::flash-messages.html.twig') %}
+            </div>
             {% block body %}{% endblock %}
             <footer>Copyright © 2017 Musée du Louvre</footer>
         </div>

@@ -86,7 +86,7 @@ h3 {
 /*
         HEADER SECTION
  */
-header, .boxes, .rowinfo, .order {
+header, .boxes, .rowinfo, .order, .item {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -172,6 +172,10 @@ header a:hover {
 /*
         BUTTONS
  */
+.centered {
+    text-align: center;
+}
+
 .btn {
     text-align: center;
     text-decoration: none;
@@ -182,12 +186,6 @@ header a:hover {
     padding: 10px 20px;
     font-size: 1.1em;
     border-radius: 12px;
-    color: white;
-    background-color: #0077b3;
-    border: 2px solid #004466;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    margin-bottom: 20px;
 }
 
 .mini {
@@ -196,9 +194,47 @@ header a:hover {
     border-radius: 12px;
 }
 
-.common:hover {
+.normal {
+    color: #ffffff;
+    background-color: #0077b3;
+    border: 2px solid #004466;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-bottom: 20px;
+}
+
+.normal:hover {
     background-color: #ffffff;
     color: #004466;
+}
+
+.danger {
+    color: #ffffff;
+    background-color: #b30000;
+    border: 2px solid #660000;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-left: 40px;
+    margin-bottom: 5px;
+}
+
+.danger:hover {
+    background-color: #ffffff;
+    color: #660000;
+}
+
+.success {
+    color: #ffffff;
+    background-color: #248f24;
+    border: 2px solid #145214;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin: 5px;
+}
+
+.success:hover {
+    background-color: #ffffff;
+    color: #145214;
 }
 
 /*
@@ -217,13 +253,23 @@ table {
     font-size: 0.9em;
 }
 
-tbody tr:nth-child(even) {
-    background: #e6ffff;
+tbody.prices tr:nth-child(even) {
+    background: #ffffe6;
     color: #000000;
 }
 
-tbody tr:nth-child(odd) {
-    background: #e6e6ff;
+tbody.prices tr:nth-child(odd) {
+    background: #ccffe6;
+    color: #000000;
+}
+
+tbody.bill tr:nth-child(even) {
+    background: #e6fff2;
+    color: #000000;
+}
+
+tbody.bill tr:nth-child(odd) {
+    background: #ffe6ff;
     color: #000000;
 }
 
@@ -231,21 +277,53 @@ td {
     padding: 2px 5px;
 }
 
-.text-right {
-    text-align: right;
-}
-
 .ticketform {
     width: 100%;
-    background: #ffccff;
+    background: #e6ffff;
     padding: 10px;
 }
 
-.orderbox {
+.orderform {
+    width: 100%;
+    background: #e6ffff;
+    padding: 10px;
+}
+
+.orderbox, .orderitem {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     padding: 5px 15px;
+}
+
+.ordercheck {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 5px 15px;
+}
+
+.item {
+    margin: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.ordertable {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.8em;
+}
+
+.ordertable thead tr {
+    font-size: 0.7em;
+}
+
+.orderpay {
+    margin: 20px 0;
+    text-align: center;
 }
 
 /*
@@ -282,6 +360,7 @@ td {
         Footer section
 */
 footer {
+    margin-top: 20px;
     padding: 20px;
     color: #2a3132;
     background-color: #66ccff;
@@ -307,6 +386,37 @@ footer {
 
 .error li {
     display: inline;
+}
+
+/*
+        MESSAGE SECTION
+ */
+.messages {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.alert p {
+    font-size: 0.9em;
+    font-weight: 700;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+.alert-success {
+    width: 100%;
+    background: #b3ffd9;
+    color: #004d26;
+    border: 1px solid #004d26;
+    border-radius: 12px;
+}
+
+.alert-error {
+    width: 100%;
+    background: #ffd9b3;
+    color: #4d2600;
+    border: 1px solid #4d2600;
+    border-radius: 12px;
 }
 
 @media (min-width: 768px) {
@@ -363,6 +473,16 @@ footer {
         margin-bottom: 20px;
     }
 
+    .ordertable {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1em;
+    }
+
+    .ordertable thead tr {
+        font-size: 1em;
+    }
+
     section.infos article.box {
         width: 30%;
     }
@@ -401,15 +521,39 @@ footer {
     footer {
         border-radius: 12px;
     }
+
+    .messages {
+        margin: 10px auto;
+    }
+
+    .alert p {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
 }
 
 @media (min-width: 1000px) {
-    .order {
+    .order, .item {
         flex-direction: row;
-        justify-content: space-between
+        justify-content: space-between;
+    }
+
+    .item {
+        flex-wrap: wrap;
     }
 
     .orderbox {
         width: 30%;
+    }
+
+    .orderitem {
+        width: 20%;
+    }
+
+    .items {
+        border: 1px solid darkblue;
+        border-radius: 12px;
+        padding: 10px;
+        margin: 10px;
     }
 }

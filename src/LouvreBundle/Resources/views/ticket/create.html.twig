@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+{% block title %}
+    Billetterie en ligne
+{% endblock %}
 {% block stylesheets %}
     {# style sheet for the date picker #}
     <link rel="stylesheet" href="{{ asset('js/datepick/jquery-ui.min.css') }}"/>
@@ -6,7 +9,6 @@
     <link rel="stylesheet" href="{{ asset('js/datepick/jquery-ui.theme.min.css') }}"/>
 
 {% endblock %}
-
 {% block body %}
     <div class="rowinfo">
         {% include('@Louvre/ticket/rates.html.twig') %}
@@ -32,7 +34,24 @@
                     {{ form_errors(myForm.duration) }}
                 </div>
             </div>
-            {{ form_end(myForm) }}
+
+            <p class="centered">
+                <a href="#" id="add_line" class="btn mini normal">Ajouter un ticket</a>
+            </p>
+
+            {% block order_items_entry_widget %}
+                <div id="order_items"
+                     data-prototype="
+                 {% filter escape %}
+                     {{ include('LouvreBundle:ticket:datafields.html.twig', { 'form': myForm.items.vars.prototype }) }}
+                 {% endfilter %}">
+                </div>
+            {% endblock %}
+            <div class="centered">
+                {{ form_widget(myForm.save) }}
+            </div>
+            {{ form_widget(myForm._token) }}
+            </form>
         </section>
     </div>
 {% endblock %}
